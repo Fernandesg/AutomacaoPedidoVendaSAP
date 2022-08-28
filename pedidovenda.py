@@ -24,6 +24,7 @@ window = sg.Window('Criar pedido de venda', layout=layout)
 while True:
     event, values = window.read()
     listaInfos = []
+
     if event == None:
         break
     match(event):
@@ -36,13 +37,16 @@ while True:
         case 'Criar pedido':
             for valor in values:
                 listaInfos.append(values[valor])
-            listaItens = listaInfos[3::2]
-            listaQuant = listaInfos[4::2]
-            remetente = listaInfos[0]
-            destino = listaInfos[1]
-            tipoFrete = listaInfos[2]
+            listaFiltrada = filter(None, listaInfos)
+            listaInfoFiltro = list(listaFiltrada)
+            listaItens = listaInfoFiltro[3::2]
+            listaQuant = listaInfoFiltro[4::2]
+            remetente = listaInfoFiltro[0]
+            destino = listaInfoFiltro[1]
+            tipoFrete = listaInfoFiltro[2]
             print(listaItens)
             print(listaQuant)
             print(remetente)
             print(destino)
             print(tipoFrete)
+            print('-='*40)
